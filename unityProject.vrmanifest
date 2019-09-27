@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.faceui_test.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "C:\\Users\\chubb\\Desktop\\王の被造物\\FaceUI_test\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "FaceUI_test [Testing]"
+        }
+      }
+    }
+  ]
+}
