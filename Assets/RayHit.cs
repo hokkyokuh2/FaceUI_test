@@ -206,6 +206,7 @@ public class RayHit : MonoBehaviour
             renderer.GetComponent<TrailRenderer>().Clear();
             renderer.enabled = false;
                 target.transform.position = new Vector3(100f, 100f, 100f);
+            orbitNumber++;
             }
         
     }

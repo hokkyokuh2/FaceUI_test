@@ -42,7 +42,6 @@ public class NICO_touches_the_button : MonoBehaviour
                 n++;
                 timeElapsed = 0.0f;
                 rayHit.drawingTrigger = true;
-                rayHit.orbitNumber++;
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class LineRendererScript : MonoBehaviour {
@@ -21,9 +22,23 @@ public class LineRendererScript : MonoBehaviour {
     void Start()
 	{
         nICO_Touches_The_Button = touch_button.GetComponent<NICO_touches_the_button>();
-        trans1.position = new Vector3(0, 1, 3);
-        trans2.position = new Vector3(0, 2, -3);
-       
+        trans1.position = new Vector3(1, 1, 3);
+        trans2.position = new Vector3(-2, 3, 2);
+
+        StreamWriter sw1 = new StreamWriter(@"C:/Users/王　卓毅/Desktop/Resources/orbit12-P.csv", true);
+        trans1.position = new Vector3(1, 2, 3);
+        trans2.position = new Vector3(0, 1, 3);
+        render8 = GetComponent<LineRenderer>();
+        render8.positionCount = 42;
+        render8.SetPosition(0, trans1.position);
+        for (int i = 1; i <= 40; i++)
+        {
+            Vector3 pos = new Vector3(0 + Mathf.Cos(3 * Mathf.PI * i / 84), 2 + Mathf.Sin(3 * Mathf.PI * i / 84), 3);
+            render8.SetPosition(i, pos);
+            sw1.WriteLine(pos.x + "," + pos.y + "," + pos.z);
+        }
+        render8.SetPosition(41, trans2.position);
+        sw1.Close();
 
     }
 
@@ -80,17 +95,22 @@ public class LineRendererScript : MonoBehaviour {
                 break;
 
             case 4:
+
+               StreamWriter sw = new StreamWriter(@"C:/Users/王　卓毅/Desktop\orbitLog/orbit10.csv", true);
                 trans1.position = new Vector3(-2, 3, 4);
                 trans2.position = new Vector3(2, 3, 4);
                render5 = GetComponent<LineRenderer>();
-                render5.positionCount = 22;
+                render5.positionCount = 42;
                 render5.SetPosition(0, trans1.position);
-                for (int i = 1; i <= 20; i++)
+                for (int i = 1; i <= 40; i++)
                 {
-                    Vector3 pos = new Vector3(-2 + 0.2f * i, 0.5f * Mathf.Pow(0.2f * i - 2.1f, 2) + 1, 4);
+                    Vector3 pos = new Vector3(-2 + 0.1f * i, 0.5f * Mathf.Pow(0.1f * i - 2.0f, 2) + 1, 4);
                     render5.SetPosition(i, pos);
+                    sw.WriteLine(pos.x + "," + pos.y + "," + pos.z);
+
                 }
-                render5.SetPosition(21, trans2.position);
+                render5.SetPosition(41, trans2.position);
+                sw.Close();
                
                 break;
 
@@ -120,17 +140,20 @@ public class LineRendererScript : MonoBehaviour {
                 break;
 
             case 7:
+               StreamWriter sw1 = new StreamWriter(@"C:/Users/王　卓毅/Desktop\orbitLog/orbit20.csv", true);
                 trans1.position = new Vector3(1, 2, 1);
                 trans2.position = new Vector3(-1, 2, 4);
                 render8 = GetComponent<LineRenderer>();
-                render8.positionCount = 22;
+                render8.positionCount = 42;
                 render8.SetPosition(0, trans1.position);
-                for (int i = 1; i <= 20; i++)
+                for (int i = 1; i <= 40; i++)
                 {
-                    Vector3 pos = Vector3.Slerp(trans1.position, trans2.position, (float)i / 21f);
+                    Vector3 pos = Vector3.Slerp(trans1.position, trans2.position, (float)i / 41f);
                     render8.SetPosition(i, pos);
+                    sw1.WriteLine(pos.x+","+ pos.y+","+ pos.z);
                 }
-                render8.SetPosition(21, trans2.position);
+                render8.SetPosition(41, trans2.position);
+                sw1.Close();
               
                 break;
 
